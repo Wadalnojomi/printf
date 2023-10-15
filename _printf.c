@@ -30,7 +30,7 @@ int _printf(const char *formate, ...)
 		}
 		else if (*formate == 's')
 		{
-			*s = va_arg(args, int);
+			s = va_arg(args, char *);
 			while (*s != '\0')
 			{
 				_putchar(*s);
