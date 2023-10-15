@@ -21,6 +21,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
+<<<<<<< HEAD
 			format++;
 			if (*format == '\0')
 			break;
@@ -28,13 +29,22 @@ int _printf(const char *format, ...)
 		{
 			char c = va_arg(args, int);
 				write(1, &c, 1);
+=======
+			c = va_arg(args, int);
+			_putchar(c);
+>>>>>>> c52f70c5e6c106a2a18111797a28fd1ebd49cb17
 			counter++;
 		}
 		else if (*format == 's')
 		{
+<<<<<<< HEAD
 		char *str = va_arg(args, char*);
 		int str_len = 0;
 			while (str[str_len] != '\0')
+=======
+			s = va_arg(args, char *);
+			while (*s != '\0')
+>>>>>>> c52f70c5e6c106a2a18111797a28fd1ebd49cb17
 			{
 				str_len++;
 				write(1, str, str_len);
