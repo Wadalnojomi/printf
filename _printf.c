@@ -24,7 +24,7 @@ int _printf(const char *formate, ...)
 			formate++;
 		if (*formate == 'c')
 		{
-			c = va_arg(args, int)
+			c = va_arg(args, int);
 				_putchar(c);
 			counter++;
 		}
