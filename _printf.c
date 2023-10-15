@@ -6,45 +6,44 @@
  */
 int _printf(const char *formate, ...)
 {
-	int counter = 0, c;
-	char *s;
-	va_list args;
+	int written = 0, (*structype)(char *, va_list);
+	char q[3];
+	va_list pa;
 
-	if (formate == NULL)
+	if (format == NULL)
 		return (-1);
-	va_start(args, formate);
-	while (*formate != '\0')
+	q[2] = '\0';
+	va_start(pa, format);
+	_putchar(-1);
+	while (format[0])
 	{
-		if (*formate != '%')
+		if (format[0] == '%')
 		{
-			_putchar(*formate);
-			counter++;
+			structype = driver(format);
+			if (structype)
+			{
+				q[0] = '%';
+				q[1] = format[1];
+				written += structype(q, pa);
+			}
+			else if (format[1] != '\0')
+			{
+				written += _putchar('%');
+				written += _putchar(format[1]);
+			}
+			else
+			{
+				written += _putchar('%');
+				break;
+			}
+			format += 2;
 		}
 		else
-			formate++;
-		if (*formate == 'c')
 		{
-			c = va_arg(args, int);
-				_putchar(c);
-			counter++;
+			written += _putchar(format[0]);
+			format++;
 		}
-		else if (*formate == 's')
-		{
-			s = va_arg(args, char *);
-			while (*s != '\0')
-			{
-				_putchar(*s);
-				s++;
-				counter++;
-			}
-		}
-		else if (*formate == '%')
-		{
-			_putchar('%');
-			counter++;
-		}
-		formate++;
 	}
-	va_end(args);
-	return (counter);
+	_putchar(-2);
+	return (written);
 }
