@@ -10,8 +10,8 @@ int _printf(char *formate, ...)
 	char c, *s;
 	va_list args;
 
-	va_start(args, int);
-	while (*format = '\0')
+	va_start(args, format);
+	while (*format != '\0')
 	{
 		if (*format != '%')
 		{
@@ -28,7 +28,7 @@ int _printf(char *formate, ...)
 		}
 		else if (*format == 's')
 		{
-			*s = va_arg(args, int)
+			*s = va_arg(args, int);
 			while (*s != '\0')
 			{
 				_putchar(*s);
