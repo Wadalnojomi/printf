@@ -5,6 +5,9 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdio.h>
+#define OUTPUT_BUF_SIZE
+#define NULL_STRING "(null)"
 /**
  * struct structprint - struct specifier
  * @q: method to translate data
@@ -20,7 +23,8 @@ int _putchar(char ch);
 int _printf(const char *format, ...);
 int print_char(va_list args);
 int print_string(va_list args);
-
+int binary(int num);
+int octal(int num);
 
 #endif
 
