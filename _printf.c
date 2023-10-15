@@ -10,6 +10,8 @@ int _printf(char *formate, ...)
 	char c, *s;
 	va_list args;
 
+	if (format == NULL)
+		return (-1);
 	va_start(args, format);
 	while (*format != '\0')
 	{
