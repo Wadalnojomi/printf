@@ -10,25 +10,25 @@ int _printf(char *formate, ...)
 	char c, *s;
 	va_list args;
 
-	if (format == NULL)
+	if (formate == NULL)
 		return (-1);
-	va_start(args, format);
-	while (*format != '\0')
+	va_start(args, formate);
+	while (*formate != '\0')
 	{
-		if (*format != '%')
+		if (*formate != '%')
 		{
-			_putchar(*format);
+			_putchar(*formate);
 			counter++;
 		}
 		else
-			format++;
-		if (*format == 'c')
+			formate++;
+		if (*formate == 'c')
 		{
-			c = va_ arg(args, int)
-				_putchar c;
+			c = va_arg(args, int)
+				_putchar(c);
 			counter++;
 		}
-		else if (*format == 's')
+		else if (*formate == 's')
 		{
 			*s = va_arg(args, int);
 			while (*s != '\0')
@@ -38,12 +38,12 @@ int _printf(char *formate, ...)
 				counter++;
 			}
 		}
-		else if (*format == '%')
+		else if (*formate == '%')
 		{
 			_putchar('%');
 			counter++;
 		}
-		format++,
+		formate++,
 	}
 	va_end(args);
 	return (counter);
