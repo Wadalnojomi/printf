@@ -5,11 +5,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
-<<<<<<< HEAD
-#include <stdio.h>
-=======
 #include <limits.h>
->>>>>>> facf9380c5f74f3bd9f0d8d5f4722c4d02bf007f
 #define OUTPUT_BUF_SIZE
 #define NULL_STRING "(null)"
 /**
@@ -19,8 +15,6 @@
  * Return: an integer
 */
 /* print_functions.c_module */
-
-
 typedef struct structprint
 {
 	char *q;
@@ -33,9 +27,5 @@ int print_string(va_list args);
 int binary(int num);
 int octal(int num);
 
-<<<<<<< HEAD
-#endif
 
-=======
-#endif /* MAIN_H */
->>>>>>> facf9380c5f74f3bd9f0d8d5f4722c4d02bf007f
+#endif
