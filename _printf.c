@@ -1,7 +1,6 @@
 #include "main.h"
-#include <stdio.h>
 /**
- * _print - printf like function
+ * _printf - printf like function
  * @formate:  is a character string
  * Return: the number of characters printed
  */
@@ -18,7 +17,7 @@ int _printf(char *formate, ...)
 	{
 		if (*format != '%')
 		{
-			putchar(*format);
+			_putchar(*format);
 			counter++;
 		}
 		else
@@ -26,7 +25,7 @@ int _printf(char *formate, ...)
 		if (*format == 'c')
 		{
 			c = va_ arg(args, int)
-				putchar c;
+				_putchar c;
 			counter++;
 		}
 		else if (*format == 's')
@@ -34,14 +33,14 @@ int _printf(char *formate, ...)
 			*s = va_arg(args, int)
 			while (*s != '\0')
 			{
-				putchar(*s);
+				_putchar(*s);
 				s++;
 				counter++;
 			}
 		}
 		else if (*format == '%')
 		{
-			putchar('%');
+			_putchar('%');
 			counter++;
 		}
 		format++,
