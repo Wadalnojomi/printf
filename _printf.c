@@ -4,10 +4,10 @@
  * @formate:  is a character string
  * Return: the number of characters printed
  */
-int _printf(char *formate, ...)
+int _printf(const char *formate, ...)
 {
-	int counter = 0;
-	char c, *s;
+	int counter = 0, c;
+	char *s;
 	va_list args;
 
 	if (formate == NULL)
@@ -43,7 +43,7 @@ int _printf(char *formate, ...)
 			_putchar('%');
 			counter++;
 		}
-		formate++,
+		formate++;
 	}
 	va_end(args);
 	return (counter);
