@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdio.h>
 /**
  * struct structprint - struct specifier
  * @q: method to translate data
