@@ -6,7 +6,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int counter = 0, c;
+	int counter = 0, c, num;
 	const char *p, *s;
 	va_list args;
 
@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 		{
 			putchar(*p);
 			++counter;
-		}
+        }
 		else
 		{
 			switch (*++p)
@@ -39,6 +39,14 @@ int _printf(const char *format, ...)
 				case '%':
 					{
 						putchar('%');
+						++counter;
+						break;
+					}
+				case 'i':
+				case 'd':
+					{
+						num = va_arg(args, int);
+						printf("%d", num);
 						++counter;
 						break;
 					}
