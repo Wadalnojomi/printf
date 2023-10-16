@@ -49,7 +49,7 @@ int _printf(const char *format, ...)
 						num = va_arg(args, int);
 						sprintf(num_str, "%d", num);
 						counter += strlen(num_str);
-						counter++;
+						++counter;
 						break;
 					}
 			}
