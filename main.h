@@ -26,6 +26,7 @@ int print_char(va_list args);
 int print_string(va_list args);
 int binary(int num);
 int octal(int num);
-
+int print_integer(va_list);
+char *itoa(long int num, int base);
 
 #endif
