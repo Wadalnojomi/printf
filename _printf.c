@@ -8,6 +8,7 @@ int _printf(const char *format, ...)
 {
 	int counter = 0, c, num;
 	const char *p, *s;
+	char num_str[14];
 	va_list args;
 
 	va_start(args, format);
@@ -17,7 +18,7 @@ int _printf(const char *format, ...)
 		{
 			putchar(*p);
 			++counter;
-        }
+		}
 		else
 		{
 			switch (*++p)
@@ -46,8 +47,8 @@ int _printf(const char *format, ...)
 				case 'd':
 					{
 						num = va_arg(args, int);
-						printf("%d", num);
-						++counter;
+						sprintf(num_str, "%d", num);
+						counter += strlen(num_str);
 						break;
 					}
 			}
