@@ -1,56 +1,41 @@
-#include "main.h"
-/**
-* _printf - printf like function
-* @format:  is a character string
-* Return: the number of characters printed
-*/
+#include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
+
 int _printf(const char *format, ...)
 {
-	int counter = 0, c, str_len;
-	char *str;
+	int counter = 0, c;
+	const char *p, *s;
 	va_list args;
 
-	if (format == NULL)
-		return (-1);
 	va_start(args, format);
-	while (*format != '\0')
-	{
-		if (*format != '%')
-		{
-			write(1, format, 1);
-			counter++;
-		}
-		else
-		{
-			format++;
-			if (*format == '\0')
-			break;
-		if (*format == 'c')
-		{
-			c = va_arg(args, int);
-				write(1, &c, 1);
-			_putchar(c);
-			counter++;
-		}
-		else if (*format == *str)
-		{
-			str = va_arg(args, char*);
-			str_len = 0;
-			while (str[str_len] != '\0')
-			{
-				str_len++;
-				write(1, str, str_len);
-				counter += str_len;
-			}
-		}
-		else if (*format == '%')
-		{
-				write(1, format, 1);
-			counter++;
-		}
-		}
-		format++;
-	}
-	va_end(args);
-	return (counter);
+	for (p = format; *p; ++p) {
+		if (*p != '%') {
+            putchar(*p);
+            ++counter;
+        } else {
+            switch (*++p) {
+                case 'c': {
+                    c = va_arg(args, int);
+                    putchar(c);
+                    ++counter;
+                    break;
+                }
+                case 's': {
+                    s = va_arg(args, const char *);
+                    fputs(s, stdout);
+                    counter += strlen(s);
+                    break;
+                }
+                case '%': {
+                    putchar('%');
+                    ++counter;
+                    break;
+                }
+            }
+        }
+    }
+    va_end(args);
+    return counter;
 }
+
