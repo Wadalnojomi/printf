@@ -7,12 +7,12 @@
  **/
 int print_integer(va_list args)
 {
-	char *p_buff;
-	int size;
+	char p_buff[60];
+	int size, num;
 
-	p_buff = itoa(va_arg(args, int), 10);
+	num = va_arg(args, int);
+	sprintf(p_buff, "%d", num);
+	size = printf("%d", (p_buff != NULL) ? p_buff : "NULL");
 
-	size = printf((p_buff != NULL) ? p_buff : "NULL");
-
-	return (size);
+	return size;
 }
