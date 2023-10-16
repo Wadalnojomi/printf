@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 		{
 			putchar(*p);
 			++counter;
-        }
+		}
 		else
 		{
 			switch (*++p)
@@ -48,4 +48,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (counter);
 }
-
