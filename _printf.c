@@ -6,7 +6,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int counter = 0, c;
+	int counter = 0, c, num;
 	const char *p, *s;
 	va_list args;
 
@@ -36,6 +36,13 @@ int _printf(const char *format, ...)
 					{
 						s = va_arg(args, const char *);
 						fputs(s, stdout), counter += strlen(s);
+						break;
+					}
+					case 'i':
+					case 'd':
+					{
+						num = va_arg(args, int);
+						printf("%d", num), ++counter;
 						break;
 					}
 			}
