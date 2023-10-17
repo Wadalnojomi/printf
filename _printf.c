@@ -22,6 +22,12 @@ int _printf(const char *format, ...)
 		{
 			switch (*++p)
 			{
+				case '%':
+					{
+						putchar('%');
+						++counter;
+						break;
+					}
 				case 'c':
 					{
 						c = va_arg(args, int);
@@ -35,13 +41,7 @@ int _printf(const char *format, ...)
 						fputs(s, stdout);
 						counter += strlen(s);
 						break;
-					}
-				case '%':
-					{
-						putchar('%');
-						++counter;
-						break;
-					}
+					}	
 				case 'i':
 				case 'd':
 					{
