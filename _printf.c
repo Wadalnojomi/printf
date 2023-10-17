@@ -1,53 +1,30 @@
 #include "main.h"
+
 /**
- * _printf - recreates the printf funct
- * @format: format specifier
- * Return: number of chars printed
- */
+ * _printf - Produces output according to a format
+ * @format: Is a character string. The format string
+ * is composed of zero or more directives
+ *
+ * Return: The number of characters printed (excluding
+ * the null byte used to end output to strings)
+ **/
 int _printf(const char *format, ...)
 {
-	int counter = 0, c, num;
-	const char *p, *s;
+	int size;
 	va_list args;
 
+	if (format == NULL)
+		return (-1);
+
+	size = _strlen(format);
+	if (size <= 0)
+		return (0);
+
 	va_start(args, format);
-	for (p = format; *p; ++p)
-	{
-		if (*p != '%')
-		{
-			putchar(*p), ++counter;
-		}
-		else
-		{
-			switch (*++p)
-			{
-				case '%':
-					{
-						putchar('%'), ++counter;
-						break;
-					}
-				case 'c':
-					{
-						c = va_arg(args, int);
-						putchar(c), ++counter;
-						break;
-					}
-				case 's':
-					{
-						s = va_arg(args, const char *);
-						fputs(s, stdout), counter += strlen(s);
-						break;
-					}
-					case 'i':
-					case 'd':
-					{
-						num = va_arg(args, int);
-						printf("%d", num), ++counter;
-						break;
-					}
-			}
-		}
-	}
+	size = handler(format, args);
+
+	_putchar(-1);
 	va_end(args);
-	return (counter);
+
+	return (size);
 }
